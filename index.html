@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Music Player</title>
     <link  rel="stylesheet" href="/style.css">
-    <link  rel="" href="/music.js">
+    <script src="/music.js" defer></script>
 </head>
 <body>
     <!-- main container -->
@@ -16,17 +16,16 @@
             <!-- song name and artist -->
             <p>
                 <span>After The Storm</span>
-                <span>By</span>
+                <span>by</span>
                 <span>Dianne</span>
             </p>
             <div class="container box">
-                
                 <div class="container">
                     <input type="range" min="0" max="100">
                 </div>
                 <div id="buttons" class="container">
                     <button>Previous</button>
-                    <button>Play</button>
+                    <button id="play-button">Play</button>
                     <button>Next</button>
                 </div>
                 <div id="picture-container" class="container">

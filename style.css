@@ -20,13 +20,13 @@ h1 {
 /* the small audio container */
 #small-container {
     flex-direction: column;
+    background-color: rgb(93, 200, 208);
     height: 300px;
     margin-top: 10px;
 }
-.box {
-    background-color: rgb(93, 200, 208);
+/* .box {
     justify-content: space-around;
-}
+} */
 #buttons {
     flex-direction: row;
 }
