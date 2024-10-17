@@ -19,7 +19,7 @@ h1 {
 }
 /* the small audio container */
 #small-container {
-    flex-direction: row;
+    flex-direction: column;
     height: 300px;
     margin-top: 10px;
 }
