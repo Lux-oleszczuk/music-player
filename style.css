@@ -8,17 +8,29 @@ h1 {
 /* display classes with flex */
 .container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 /* the main div container */
 #big-container {
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
 }
 /* the small audio container */
 #small-container {
+    flex-direction: row;
     height: 300px;
     margin-top: 10px;
+}
+.box {
+    background-color: rgb(93, 200, 208);
+    justify-content: space-around;
+}
+#buttons {
+    flex-direction: row;
+}
+#cover1 {
+    width: 160px;
+    height: 200px;
 }
