@@ -2,6 +2,8 @@
 const audioPlayer = new Audio();
 //select the playPauseButton element
 const playPauseButton = document.getElementById("play-button");
+
+const progressSlider = document.getElementById("progress-slider");
 //audioPlayer.src is the first song
 audioPlayer.src = "assets/DIANNE - After the Storm.mp3"
 
@@ -25,7 +27,19 @@ function onPlayPauseClick() {
 }
 
 function onLoadedMetadata() {
-    console.log(audioPlayer, duration);
+    progressSlider.max = audioPlayer.duration;
+}
+
+function onTimeUpdate() {
+    progressSlider.value = audioPlayer.currentTime;
+}
+function onEnd() {
+    progressSlider.value = 0;
+    playPauseButton.innerHTML = "play";
+    playing = false;
 }
 
 playPauseButton.onclick = onPlayPauseClick;
+audioPlayer.onloadedmetadata = onLoadedMetadata;
+audioPlayer.ontimeupdate = onTimeUpdate;
+audioPlayer.onended = onEnd;
