@@ -6,8 +6,11 @@ const playPauseButton = document.getElementById("play-button");
 const progressSlider = document.getElementById("progress-slider");
 //audioPlayer.src is the first song
 audioPlayer.src = "assets/DIANNE - After the Storm.mp3"
+audioPlayer.volume = 0,5;
 
 let playing = false;
+
+let updatingProgress = false;
 
 /**
  * if audio player is not playing -> play sound
@@ -28,6 +31,8 @@ function onPlayPauseClick() {
 
 function onLoadedMetadata() {
     progressSlider.max = audioPlayer.duration;
+
+    durationText.innerHTML = secondsToMMSS(audioPlayer, duration);
 }
 
 function onTimeUpdate() {
