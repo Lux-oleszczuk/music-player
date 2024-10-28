@@ -44,6 +44,20 @@ function onEnd() {
     playing = false;
 }
 
+
+function secondsToMMSS(seconds) {
+    const integerSecond = parseInt(seconds);
+
+    // for second calculation
+    let MM = parseInt(integerSeconds / 60);
+    if (MM > 10) MM = "0" + MM;
+
+    let SS = integerSeconds % 60;
+    if (SS < 10) SS = "0" + SS;
+
+    return MM + ":" + SS;
+}
+
 playPauseButton.onclick = onPlayPauseClick;
 audioPlayer.onloadedmetadata = onLoadedMetadata;
 audioPlayer.ontimeupdate = onTimeUpdate;
