@@ -38,7 +38,7 @@ function onPlayPauseClick() {
 function onLoadedMetadata() {
     progressSlider.max = audioPlayer.duration;
 
-    durationText.innerHTML = secondsToMMSS(audioPlayer, duration);
+    durationText.innerHTML = secondsToMMSS(audioPlayer.duration);
 }
 
 function onTimeUpdate() {
@@ -55,7 +55,7 @@ function onEnd() {
 }
 
 /**
- *  take value of the volumeSlider and update the audioPlayer.vplume
+ *  take value of the volumeSlider and update the audioPlayer.volume
  */
 function onVolumeSliderChange() {
     audioPlayer.volume = volumeSlider.value * 0.01;
@@ -81,7 +81,7 @@ function onProgressSliderChange() {
  * @returns time formatted as "MM/SS"
  */
 function secondsToMMSS(seconds) {
-    const integerSecond = parseInt(seconds);
+    const integerSeconds = parseInt(seconds);
 
     // for second calculation
     let MM = parseInt(integerSeconds / 60);
