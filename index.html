@@ -19,21 +19,23 @@
                 <span>by</span>
                 <span>Dianne</span>
             </p>
+            <!--volume, previous, next, cover image-->
             <div class="container box">
                 <div class="container">
-                    <input type="range" min="0" max="100">
+                    <input id="volume-slider" type="range" min="0" max="100">
                 </div>
                 <div id="buttons" class="container">
                     <button>Previous</button>
                     <button id="play-button">Play</button>
                     <button>Next</button>
                 </div>
-                <div id="picture-container" class="container">
-                    <img id="cover1" src="/covers/Dianne1.jpg">
-                </div>
+                <img id="cover1" src="/covers/Dianne1.jpg">
             </div>
             <div class="container">
-                <p>00/00</p>
+                <p>
+                    <span id="progress-text">00/00</span>
+                    <span id="progress-slider">00/00</span>
+                </p>
                 <input id="progress-slider" type="range" value="0">
             </div>
         </div>
