@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6f9ad718da.js" crossorigin="anonymous"></script>
     <title>Random Music Player</title>
     <link  rel="stylesheet" href="/style.css">
     <script src="/music.js" defer></script>
@@ -28,9 +29,9 @@
                 </div>
                 <!-- previous, next -->
                 <div id="buttons" class="container">
-                    <button>Previous</button>
-                    <button id="play-button">Play</button>
-                    <button>Next</button>
+                    <button><i class="fa-solid fa-backward"></i></button>
+                    <button id="play-button"><i class="fa-solid fa-play"></i></button>
+                    <button><i class="fa-solid fa-forward"></i></button>
                 </div>
                 <!-- img cover -->
                 <img id="cover1" src="/covers/Dianne1.jpg">
@@ -39,7 +40,7 @@
             <div class="container">
                 <p>
                     <span id="progress-text">00/00</span>
-                    <span id="progress-slider">00/00</span>
+                    <span id="duration-text">00/00</span>
                 </p>
                 <input id="progress-slider" type="range" value="0">
             </div>

@@ -18,6 +18,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .justify-space-around {
     justify-content: space-around;
@@ -37,7 +38,12 @@ h1 {
     padding: 20px;
     color: rgb(230, 230, 230);
 }
-
+#volume-slider {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+}
 button {
     flex-direction: row;
     margin: 3px;

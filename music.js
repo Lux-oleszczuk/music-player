@@ -1,18 +1,18 @@
-// create a ne audioplayer object
+// create a new audio player object
 const audioPlayer = new Audio();
 //select the playPauseButton element
 const playPauseButton = document.getElementById("play-button");
 // select the progress slider
 const progressSlider = document.getElementById("progress-slider");
-// select volume
+// select volume slider
 const volumeSlider = document.getElementById("volume-slider");
-// text spam change
+// text span change
 const progressText = document.getElementById("progress-text");
-const durationText = document.getElementById("progress-slider");
+const durationText = document.getElementById("duration-text");
 
 //audioPlayer.src is the first song
 audioPlayer.src = "assets/DIANNE - After the Storm.mp3"
-audioPlayer.volume = 0,5;
+audioPlayer.volume = 0.5;
 
 let playing = false;
 
@@ -20,17 +20,17 @@ let updatingProgress = false;
 
 /**
  * if audio player is not playing -> play sound
- * if olaying -> pause
+ * if playing -> pause
  */
 
 function onPlayPauseClick() {
-    if(playing) {
+    if (playing) {
         audioPlayer.pause();
-        playPauseButton.innerHTML = "Play";
+        playPauseButton.innerHTML = '<i class="fa-solid fa-play"></i>';
         playing = false;
     } else {
         audioPlayer.play();
-        playPauseButton.innerHTML = "pause";
+        playPauseButton.innerHTML = '<i class="fa-solid fa-pause"></i>';
         playing = true;
     }
 }
@@ -47,11 +47,12 @@ function onTimeUpdate() {
     }
     progressText.innerHTML = secondsToMMSS(audioPlayer.currentTime);
 }
+
 function onEnd() {
     progressSlider.value = 0;
-    playPauseButton.innerHTML = "play";
+    playPauseButton.innerHTML = '<i class="fa-solid fa-play"></i>';
     playing = false;
-    progressText.innerHTML = "00/00";
+    progressText.innerHTML = "00:00";
 }
 
 /**
@@ -62,13 +63,14 @@ function onVolumeSliderChange() {
 }
 
 /**
- * onProgressMouseDown updates the updatingProgress bolean to mark the user is updating the progrssSlider
+ * onProgressMouseDown updates the updatingProgress boolean to mark that the user is updating the progressSlider
  */
 function onProgressMouseDown() {
     updatingProgress = true;
 }
+
 /**
- * onProgressSliderChange updates the currentTime of the audioPlayer to the value of the progressSlider and updatingProgress to false, to mark the user is not moving the slider anymore
+ * onProgressSliderChange updates the currentTime of the audioPlayer to the value of the progressSlider and sets updatingProgress to false to mark that the user is not moving the slider anymore
  */
 function onProgressSliderChange() {
     audioPlayer.currentTime = progressSlider.value;
@@ -78,14 +80,14 @@ function onProgressSliderChange() {
 /**
  * 
  * @param {number} seconds time in seconds
- * @returns time formatted as "MM/SS"
+ * @returns time formatted as "MM:SS"
  */
 function secondsToMMSS(seconds) {
     const integerSeconds = parseInt(seconds);
 
-    // for second calculation
+    // for minute calculation
     let MM = parseInt(integerSeconds / 60);
-    if (MM > 10) MM = "0" + MM;
+    if (MM < 10) MM = "0" + MM;
 
     // for second calculation
     let SS = integerSeconds % 60;
@@ -95,14 +97,16 @@ function secondsToMMSS(seconds) {
 }
 
 playPauseButton.onclick = onPlayPauseClick;
+
 //events of audioPlayer
 audioPlayer.onloadedmetadata = onLoadedMetadata;
 audioPlayer.ontimeupdate = onTimeUpdate;
 audioPlayer.onended = onEnd;
 
 //events of volume slider
-volumeSlider.onchange = onVolumeSliderChange;
+volumeSlider.oninput = onVolumeSliderChange;
 
 //events of progress slider
-progressSlider.onchange = onProgressSliderChange;
+progressSlider.oninput = onProgressSliderChange;
 progressSlider.onmousedown = onProgressMouseDown;
+progressSlider.onmouseup = () => updatingProgress = false; // Additional event to ensure updatingProgress is reset after mouse release
