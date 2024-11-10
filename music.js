@@ -109,4 +109,4 @@ volumeSlider.oninput = onVolumeSliderChange;
 //events of progress slider
 progressSlider.oninput = onProgressSliderChange;
 progressSlider.onmousedown = onProgressMouseDown;
-progressSlider.onmouseup = () => updatingProgress = true; // Additional event to ensure updatingProgress is reset after mouse release
+progressSlider.onmouseup = () => updatingProgress = true; // Additional event to ensure updatingProgress is "true" after mouse release
