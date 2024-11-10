@@ -13,6 +13,15 @@ h1 {
     align-items: center;
     justify-content: center;
 }
+/* container for arranging items vertically */
+.vertical-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.justify-space-around {
+    justify-content: space-around;
+}
 /* the main div container */
 #big-container {
     flex-direction: column;
@@ -29,8 +38,13 @@ h1 {
     color: rgb(230, 230, 230);
 }
 
-#buttons {
+button {
     flex-direction: row;
+    margin: 3px;
+    padding: 3px;
+    background-color: rgb(83, 100, 169);
+    color: white;
+    border-radius: 5px;
 }
 #cover1 {
     width: 160px;

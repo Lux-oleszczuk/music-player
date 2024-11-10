@@ -87,6 +87,7 @@ function secondsToMMSS(seconds) {
     let MM = parseInt(integerSeconds / 60);
     if (MM > 10) MM = "0" + MM;
 
+    // for second calculation
     let SS = integerSeconds % 60;
     if (SS < 10) SS = "0" + SS;
 
