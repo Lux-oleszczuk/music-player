@@ -38,6 +38,18 @@ h1 {
     padding: 20px;
     color: rgb(230, 230, 230);
 }
+/* drop area styling */
+/* Add a border or background to show where to drop files */
+.drop-area {
+    border: 2px dashed #cccccc;
+    padding: 20px;
+    transition: background-color 0.3s ease;
+}
+.drop-area.highlight {
+    background-color: #e3e3e3; /* Slightly change background color when highlighted */
+    border-color: #aaaaaa;
+}
+
 #volume-slider {
     position: absolute;
     display: flex;

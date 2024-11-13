@@ -9,6 +9,8 @@ const volumeSlider = document.getElementById("volume-slider");
 // text span change
 const progressText = document.getElementById("progress-text");
 const durationText = document.getElementById("duration-text");
+//drop area variable
+const dropArea = document.getElementById("small-container");
 
 //audioPlayer.src is the first song
 audioPlayer.src = "assets/DIANNE - After the Storm.mp3"
@@ -17,6 +19,56 @@ audioPlayer.volume = 0.5;
 let playing = false;
 
 let updatingProgress = false;
+
+// Add event listeners to handle drag-and-drop
+dropArea.addEventListener('dragenter', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropArea.classList.add('highlight'); // Add a highlight to show it's a drop area
+});
+
+dropArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropArea.classList.add('highlight'); // Continue showing highlight while dragging over
+});
+
+dropArea.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropArea.classList.remove('highlight'); // Remove highlight when leaving the drop area
+});
+
+dropArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropArea.classList.remove('highlight'); // Remove highlight after dropping
+
+    // Get the dropped file
+    const files = e.dataTransfer.files;
+
+    if (files.length) {
+        const file = files[0];
+
+        // Ensure it's an audio file
+        if (file.type === "audio/mp3" || file.type === "audio/mpeg" || file.type === "audio/M4A") {
+            // Create a URL for the audio player
+            const fileURL = URL.createObjectURL(file);
+            audioPlayer.src = fileURL;
+
+            // Play the audio
+            audioPlayer.play();
+            playing = true;
+            playPauseButton.innerHTML = '<i class="fa-solid fa-pause"></i>';
+
+            // Update track info (if needed, otherwise you can remove this part)
+            const trackInfo = document.querySelector("#small-container p span");
+            trackInfo.innerText = file.name.replace(".mp3", "M4A");
+        } else {
+            alert("Please drop a valid MP3 file.");
+        }
+    }
+});
 
 /**
  * if audio player is not playing -> play sound
