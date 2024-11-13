@@ -50,7 +50,7 @@ dropArea.addEventListener('drop', (e) => {
     if (files.length) {
         const file = files[0];
 
-        // Ensure it's an audio file
+        // Ensure it's an audio file / file.type === "audio/M4A" doesn't work
         if (file.type === "audio/mp3" || file.type === "audio/mpeg" || file.type === "audio/M4A") {
             // Create a URL for the audio player
             const fileURL = URL.createObjectURL(file);
@@ -63,7 +63,7 @@ dropArea.addEventListener('drop', (e) => {
 
             // Update track info (if needed, otherwise you can remove this part)
             const trackInfo = document.querySelector("#small-container p span");
-            trackInfo.innerText = file.name.replace(".mp3", "M4A");
+            trackInfo.innerText = file.name.replace(".mp3", "");
         } else {
             alert("Please drop a valid MP3 file.");
         }
